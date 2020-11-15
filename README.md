@@ -3,13 +3,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This project is educational, this is a Rest API based on [Mangos Authentication Database](https://github.com/mangoszero/database), it provides access to the database through web calls:
-- Account
-- Ban
-- Db Version
-- Realm
-- Realm status
-- Warden logs
-- Database Maintenance operations
+- Db Versions
+- Databases Maintenance operations
 
 # OpenAPI
 
@@ -29,7 +24,7 @@ This software is tested against [openliberty 20.0.0.11](https://openliberty.io/)
 
 # Configuring your webserver
 
-Start by making available, in your lib directory, your database JDBC driver. Once done, here's an example for an openliberty server.xml configuration which will setup this application on `/auth-service` on port 9081. It's also assuming that you're using MariaDB and that it's provided in the shared resources folder of the webserver.
+Start by making available, in your lib directory, your database JDBC driver. Once done, here's an example for an openliberty server.xml configuration which will setup this application on `/maintenance-service` on port 9081. It's also assuming that you're using MariaDB and that it's provided in the shared resources folder of the webserver.
 
 ```xml
 <server description="ZeroAuthDB">
@@ -64,3 +59,7 @@ Start by making available, in your lib directory, your database JDBC driver. Onc
 ```
 
 Voilà ! You're all set, now you can happily use this API to interact with the database.
+
+# Docker
+
+You can also user the provided Dockerfile as example to create your own applicative image containing this service !
