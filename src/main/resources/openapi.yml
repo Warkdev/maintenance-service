@@ -1,15 +1,15 @@
 openapi: 3.0.0
 info:
-  title: Mangos Auth API
-  description: API allowing to interact with the Mangos Auth Database
+  title: Mangos Maintenance API
+  description: API allowing to interact with the technical part of the databases
   license:
     name: Apache 2.0
   version: "1.0"
 externalDocs:
   description: Instructions on how to deploy this WebApp
-  url: https://github.com/Warkdev/zero-auth-db/blob/master/README.md
+  url: https://github.com/Warkdev/maintenance-service/blob/master/README.md
 servers:
-- url: http://localhost:9081/maintenance-service
+- url: http://localhost:8081/maintenance-service
 tags:
 - name: version
   description: Operations about database version
