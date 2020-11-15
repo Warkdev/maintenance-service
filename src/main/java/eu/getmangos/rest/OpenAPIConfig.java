@@ -11,12 +11,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @ApplicationPath("/")
 @OpenAPIDefinition(
     tags = {
-        @Tag(name = "account", description="Operations about accounts"),
-        @Tag(name = "ban", description="Operations about bans (accounts and IPs)"),
         @Tag(name = "version", description="Operations about database version"),
-        @Tag(name = "realm", description="Operations about realms"),
-        @Tag(name = "status", description="Operations about realms status"),
-        @Tag(name = "warden", description="Operations about warden logfiles"),
         @Tag(name = "operation", description="Maintenance operations on the database")
     },
     externalDocs = @ExternalDocumentation(
