@@ -19,7 +19,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
         url = "https://github.com/Warkdev/maintenance-service/blob/master/README.md"
     ),
     info = @Info(
-            title = "Mangos Auth API",
+            title = "Mangos Maintenance API",
             version = "1.0",
             description = "API allowing to interact with the technical part of the databases",
             license = @License(
