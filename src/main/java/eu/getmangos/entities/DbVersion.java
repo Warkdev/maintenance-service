@@ -10,6 +10,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
 @Entity
 @Table(
     name="db_version"
@@ -30,28 +32,4 @@ public class DbVersion implements Serializable {
 
     @Column(name="comment", length = 150)
     private String comment;
-
-    public DbVersionId getId() {
-        return id;
-    }
-
-    public void setId(DbVersionId id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 }

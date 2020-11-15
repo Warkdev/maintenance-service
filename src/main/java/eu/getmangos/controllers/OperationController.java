@@ -14,11 +14,6 @@ import org.slf4j.Logger;
 public class OperationController {
     @Inject private Logger logger;
 
-    @Inject private AccountBannedController accountBannedController;
-    @Inject private RealmCharactersController realmCharactersController;
-    @Inject private UptimeController uptimeController;
-    @Inject private WardenController wardenController;
-
     /**
      * Clean-up all dead links from the database.
      * @return An Map containing a list of items and the amount of deleted records.
@@ -30,16 +25,16 @@ public class OperationController {
         Map<String, Integer> deletedItems = new HashMap<>();
 
         // Clean-up bans
-        deletedItems.put("bans", accountBannedController.cleanupDeadLinks());
+        //deletedItems.put("bans", accountBannedController.cleanupDeadLinks());
 
         // Clean-up links
-        deletedItems.put("links", realmCharactersController.cleanupDeadLinks());
+        ///deletedItems.put("links", realmCharactersController.cleanupDeadLinks());
 
         // Clean-up Uptimes
-        deletedItems.put("uptime", uptimeController.cleanupDeadLinks());
+        //deletedItems.put("uptime", uptimeController.cleanupDeadLinks());
 
         // Clean-up Warden Logs
-        deletedItems.put("warden_logs", wardenController.cleanupDeadLinks());
+        //deletedItems.put("warden_logs", wardenController.cleanupDeadLinks());
 
         logger.debug("cleanup() exit.");
         return deletedItems;
@@ -55,10 +50,10 @@ public class OperationController {
 
         Map<String, List> deletedItems = new HashMap<>();
 
-        deletedItems.put("bans", accountBannedController.findDeadLinks());
-        deletedItems.put("links", realmCharactersController.findDeadLinks());
-        deletedItems.put("uptime", uptimeController.findDeadLinks());
-        deletedItems.put("warden_logs", wardenController.findDeadLinks());
+        //deletedItems.put("bans", accountBannedController.findDeadLinks());
+        //deletedItems.put("links", realmCharactersController.findDeadLinks());
+        //deletedItems.put("uptime", uptimeController.findDeadLinks());
+        //deletedItems.put("warden_logs", wardenController.findDeadLinks());
 
         logger.debug("getCleanup() exit.");
         return deletedItems;

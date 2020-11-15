@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
+import lombok.Data;
+
 /**
 * Composite Primary Key for DbVersion
 */
