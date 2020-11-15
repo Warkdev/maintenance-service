@@ -16,12 +16,12 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
     },
     externalDocs = @ExternalDocumentation(
         description = "Instructions on how to deploy this WebApp",
-        url = "https://github.com/Warkdev/zero-auth-db/blob/master/README.md"
+        url = "https://github.com/Warkdev/maintenance-service/blob/master/README.md"
     ),
     info = @Info(
             title = "Mangos Auth API",
             version = "1.0",
-            description = "API allowing to interact with the Mangos Auth Database",
+            description = "API allowing to interact with the technical part of the databases",
             license = @License(
                     name = "Apache 2.0"
             )
