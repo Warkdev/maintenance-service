@@ -1,9 +1,5 @@
 package eu.getmangos.rest.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Path;
@@ -14,6 +10,8 @@ import org.slf4j.Logger;
 
 import eu.getmangos.controllers.DAOException;
 import eu.getmangos.controllers.OperationController;
+import eu.getmangos.dto.CleanupPreviewDTO;
+import eu.getmangos.dto.CleanupSummaryDTO;
 import eu.getmangos.rest.OperationResource;
 
 @RequestScoped
@@ -28,7 +26,7 @@ public class OperationResourceService implements OperationResource {
     public Response cleanUpDB() {
         logger.debug("cleanUpDB() entry.");
 
-        Map<String, Integer> ret = new HashMap<>();
+        CleanupSummaryDTO ret = new CleanupSummaryDTO();
 
         try {
             ret = this.operationController.cleanup();
@@ -45,7 +43,7 @@ public class OperationResourceService implements OperationResource {
     public Response showCleanUpDB() {
         logger.debug("showCleanUpDB() entry.");
 
-        Map<String, List> ret = new HashMap<>();
+        CleanupPreviewDTO ret = new CleanupPreviewDTO();
 
         try {
             ret = this.operationController.getCleanup();

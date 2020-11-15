@@ -1,7 +1,5 @@
 package eu.getmangos.rest;
 
-import java.util.Map;
-
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,7 +12,9 @@ import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
-import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import eu.getmangos.dto.CleanupPreviewDTO;
+import eu.getmangos.dto.CleanupSummaryDTO;
 
 public interface OperationResource {
 
@@ -27,7 +27,7 @@ public interface OperationResource {
     @APIResponses(
         value = {
             @APIResponse(responseCode = "200", description = "The database has been cleaned-up with a summary of the cleaning", content = @Content(
-                        mediaType = "application/json", schema = @Schema(implementation = Map.class)
+                        mediaType = "application/json", schema = @Schema(implementation = CleanupSummaryDTO.class)
                 )
             ),
             @APIResponse(responseCode = "400", description = "Error with the request"),
@@ -45,7 +45,7 @@ public interface OperationResource {
     @APIResponses(
         value = {
             @APIResponse(responseCode = "200", description = "The list of items which will be cleaned-up is returned.", content = @Content(
-                        mediaType = "application/json", schema = @Schema(implementation = Map.class)
+                        mediaType = "application/json", schema = @Schema(implementation = CleanupPreviewDTO.class)
                 )
             ),
             @APIResponse(responseCode = "400", description = "Error with the request"),

@@ -10,6 +10,9 @@ import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 
+import eu.getmangos.dto.CleanupPreviewDTO;
+import eu.getmangos.dto.CleanupSummaryDTO;
+
 @RequestScoped
 public class OperationController {
     @Inject private Logger logger;
@@ -19,10 +22,10 @@ public class OperationController {
      * @return An Map containing a list of items and the amount of deleted records.
      */
     @Transactional
-    public Map<String, Integer> cleanup() throws DAOException {
+    public CleanupSummaryDTO cleanup() throws DAOException {
         logger.debug("cleanup() entry.");
 
-        Map<String, Integer> deletedItems = new HashMap<>();
+        CleanupSummaryDTO summary = new CleanupSummaryDTO();
 
         // Clean-up bans
         //deletedItems.put("bans", accountBannedController.cleanupDeadLinks());
@@ -37,7 +40,7 @@ public class OperationController {
         //deletedItems.put("warden_logs", wardenController.cleanupDeadLinks());
 
         logger.debug("cleanup() exit.");
-        return deletedItems;
+        return summary;
     }
 
     /**
@@ -45,10 +48,10 @@ public class OperationController {
      * @return An Map containing a list of items which will be deleted.
      */
     @Transactional
-    public Map<String, List> getCleanup() throws DAOException {
+    public CleanupPreviewDTO getCleanup() throws DAOException {
         logger.debug("getCleanup() entry.");
 
-        Map<String, List> deletedItems = new HashMap<>();
+        CleanupPreviewDTO preview = new CleanupPreviewDTO();
 
         //deletedItems.put("bans", accountBannedController.findDeadLinks());
         //deletedItems.put("links", realmCharactersController.findDeadLinks());
@@ -56,6 +59,6 @@ public class OperationController {
         //deletedItems.put("warden_logs", wardenController.findDeadLinks());
 
         logger.debug("getCleanup() exit.");
-        return deletedItems;
+        return preview;
     }
 }
