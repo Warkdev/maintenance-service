@@ -1,5 +1,7 @@
 package eu.getmangos.controllers;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -13,13 +15,13 @@ import eu.getmangos.entities.DbVersion;
 public class DbVersionController {
     @Inject private Logger logger;
 
-    @PersistenceContext(name = "AUTH_PU")
+    @PersistenceContext(unitName = "AUTH_PU")
     private EntityManager emAuth;
 
-    @PersistenceContext(name = "CHAR_PU")
+    @PersistenceContext(unitName = "CHAR_PU")
     private EntityManager emChar;
 
-    @PersistenceContext(name = "WORLD_PU")
+    @PersistenceContext(unitName = "WORLD_PU")
     private EntityManager emWorld;
 
     /**
@@ -52,12 +54,13 @@ public class DbVersionController {
      * Retrieves the database version.
      * @return A record containing the database version.
      */
-    public DbVersion getWorldDBVersion() {
+    @SuppressWarnings("unchecked")
+    public List<DbVersion> getWorldDBVersion() {
         logger.debug("getWorldDBVersion() entry.");
 
-        DbVersion version = (DbVersion) emWorld.createNamedQuery("DbVersion.findAll").getSingleResult();
+        List<DbVersion> list = emWorld.createNamedQuery("DbVersion.findAll").getResultList();
 
         logger.debug("getWorldDBVersion() exit.");
-        return version;
+        return list;
     }
 }

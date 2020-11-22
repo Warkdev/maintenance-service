@@ -1,6 +1,7 @@
 package eu.getmangos.rest;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -16,6 +17,7 @@ import eu.getmangos.dto.DbVersionDTO;
 public interface VersionResource {
 
     @GET
+    @Path("auth")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Retrieves the auth database version",
         description = "This API is retrieving the auth database version from the database."
@@ -33,6 +35,7 @@ public interface VersionResource {
     public Response getAuthDbVersion();
 
     @GET
+    @Path("char")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Retrieves the char database version",
         description = "This API is retrieving the char database version from the database."
@@ -50,6 +53,7 @@ public interface VersionResource {
     public Response getCharDbVersion();
 
     @GET
+    @Path("world")
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Retrieves the world database version",
         description = "This API is retrieving the world database version from the database."
