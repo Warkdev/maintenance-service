@@ -3,8 +3,7 @@ package eu.getmangos.rest.impl;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Path;
-
-
+import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.slf4j.Logger;
@@ -25,11 +24,30 @@ public class VersionResourceService implements VersionResource {
 
     @Inject private VersionMapper mapper;
 
-    public DbVersionDTO getDbVersion() {
-        logger.debug("getDbVersion() entry.");
-        DbVersionDTO version = mapper.versionToDTO(dbVersionController.getVersion());
+    @Override
+    public Response getAuthDbVersion() {
+        logger.debug("getAuthDbVersion() entry.");
+        DbVersionDTO version = mapper.versionToDTO(dbVersionController.getAuthDBVersion());
 
-        logger.debug("getDbVersion() exit.");
-        return version;
+        logger.debug("getAuthDbVersion() exit.");
+        return Response.status(200).entity(version).build();
+    }
+
+    @Override
+    public Response getCharDbVersion() {
+        logger.debug("getCharDbVersion() entry.");
+        DbVersionDTO version = mapper.versionToDTO(dbVersionController.getCharDBVersion());
+
+        logger.debug("getCharDbVersion() exit.");
+        return Response.status(200).entity(version).build();
+    }
+
+    @Override
+    public Response getWorldDbVersion() {
+        logger.debug("getWorldDbVersion() entry.");
+        DbVersionDTO version = mapper.versionToDTO(dbVersionController.getWorldDBVersion());
+
+        logger.debug("getWorldDbVersion() exit.");
+        return Response.status(200).entity(version).build();
     }
 }

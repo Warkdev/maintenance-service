@@ -14,18 +14,50 @@ public class DbVersionController {
     @Inject private Logger logger;
 
     @PersistenceContext(name = "AUTH_PU")
-    private EntityManager em;
+    private EntityManager emAuth;
+
+    @PersistenceContext(name = "CHAR_PU")
+    private EntityManager emChar;
+
+    @PersistenceContext(name = "WORLD_PU")
+    private EntityManager emWorld;
 
     /**
      * Retrieves the database version.
      * @return A record containing the database version.
      */
-    public DbVersion getVersion() {
-        logger.debug("getVersion() entry.");
+    public DbVersion getAuthDBVersion() {
+        logger.debug("getAuthDBVersion() entry.");
 
-        DbVersion version = (DbVersion) em.createNamedQuery("DbVersion.findAll").getSingleResult();
+        DbVersion version = (DbVersion) emAuth.createNamedQuery("DbVersion.findAll").getSingleResult();
 
-        logger.debug("getVersion() exit.");
+        logger.debug("getAuthDBVersion() exit.");
+        return version;
+    }
+
+    /**
+     * Retrieves the database version.
+     * @return A record containing the database version.
+     */
+    public DbVersion getCharDBVersion() {
+        logger.debug("getCharDBVersion() entry.");
+
+        DbVersion version = (DbVersion) emChar.createNamedQuery("DbVersion.findAll").getSingleResult();
+
+        logger.debug("getCharDBVersion() exit.");
+        return version;
+    }
+
+    /**
+     * Retrieves the database version.
+     * @return A record containing the database version.
+     */
+    public DbVersion getWorldDBVersion() {
+        logger.debug("getWorldDBVersion() entry.");
+
+        DbVersion version = (DbVersion) emWorld.createNamedQuery("DbVersion.findAll").getSingleResult();
+
+        logger.debug("getWorldDBVersion() exit.");
         return version;
     }
 }
