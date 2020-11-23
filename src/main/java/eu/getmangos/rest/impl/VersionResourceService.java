@@ -18,7 +18,7 @@ import eu.getmangos.mapper.VersionMapper;
 import eu.getmangos.rest.VersionResource;
 
 @RequestScoped
-@Path("/v1")
+@Path("/version/v1")
 @Tag(name = "version")
 public class VersionResourceService implements VersionResource {
 
